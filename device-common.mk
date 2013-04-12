@@ -14,13 +14,19 @@
 # limitations under the License.
 #
 
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+  LOCAL_KERNEL := device/asus/grouper/kernel
+else
+  LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+
 PRODUCT_AAPT_CONFIG := normal large tvdpi hdpi
 PRODUCT_AAPT_PREF_CONFIG := tvdpi
 
 
 PRODUCT_PROPERTY_OVERRIDES := \
     wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=15 \
+    wifi.supplicant_scan_interval=100 \
     tf.enable=y \
     drm.service.enabled=true
 
@@ -31,6 +37,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 include frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk
 
 PRODUCT_COPY_FILES += \
+    $(LOCAL_KERNEL):kernel \
     device/asus/grouper/fstab.grouper:root/fstab.grouper \
     device/asus/grouper/ueventd.grouper.rc:root/ueventd.grouper.rc \
     device/asus/grouper/init.grouper.usb.rc:root/init.grouper.usb.rc \
