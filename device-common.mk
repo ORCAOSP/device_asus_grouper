@@ -14,13 +14,13 @@
 # limitations under the License.
 #
 
-PRODUCT_AAPT_CONFIG := normal large tvdpi hdpi
+PRODUCT_AAPT_CONFIG := normal large tvdpi hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := tvdpi
 
 
 PRODUCT_PROPERTY_OVERRIDES := \
     wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=15 \
+    wifi.supplicant_scan_interval=100 \
     tf.enable=y \
     drm.service.enabled=true
 
